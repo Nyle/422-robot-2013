@@ -6,6 +6,6 @@
 //#define USE_CPP_11
 
 // Make sure the jumpers are set to coast when using bang-bang
-//#define USE_BANG_BANG
+#define USE_BANG_BANG
 
 #endif // COMPILATION_SETTINGS_H
