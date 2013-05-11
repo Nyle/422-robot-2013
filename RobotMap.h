@@ -38,7 +38,9 @@ const UINT32 LEFT_DRIVE_CHANNEL = 1,
 const UINT32 FIRST_SHOOTER_WHEEL_CHANNEL = 4,
 	         SECOND_SHOOTER_WHEEL_CHANNEL = 5;
 // PWM channels for the shooter articulator
-const UINT32 ARTICULATOR_MOTOR_CHANNEL = 3;
+const UINT32 ARTICULATOR_MOTOR_CHANNEL = 0;
+
+const UINT32 FLASHLIGHT_CHANNEL = 3;
 /**@}*/
 
 
@@ -75,7 +77,17 @@ const UINT32 COMPRESSOR_PRESSURE_SWITCH_CHANNEL = 8,
 // Solenoid ports for the shooter
 const UINT32 EXTEND_DISK_PUSHER_CHANNEL = 8,
 	         RETRACT_DISK_PUSHER_CHANNEL = 7;
-// Solenoid ports for the climber
+
+#ifdef USE_PISTON_ARTICULATOR
+// Solenoid ports for the articulator
+const UINT32 RAISE_SHOOTER_CHANNEL = 5,
+		     LOWER_SHOOTER_CHANNEL = 6;
+#endif
+
+const UINT32 EXTEND_NUCLEAR_OPTION_CHANNEL = 0,
+	         RETRACT_NUCLEAR_OPTION_CHANNEL = 0;
+
+// Solenoid ports for the articulator
 const UINT32 CLIMBER_RIGHT_SERVO_CHANNEL = 9,
 		     CLIMBER_LEFT_SERVO_CHANNEL = 10;
 /**@}*/
@@ -96,7 +108,7 @@ const UINT32 GREEN_RELAY_CHANNEL = 5;
  * @defgroup Analog Channel Numbers
  * @{
  */
-const UINT32 LEFT_ANTENNA_CHANNEL = 8,
+const UINT32 LEFT_ANTENNA_CHANNEL = 6,
 	         RIGHT_ANTENNA_CHANNEL = 7,
 	         VARIABLE_DIAL_CHANNEL = 1;
 

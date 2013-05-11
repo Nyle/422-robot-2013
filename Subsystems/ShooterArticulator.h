@@ -7,8 +7,9 @@
 #define SHOOTER_ARTICULATOR_H
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
-#include "../CompilationSettings.h"
 
+#include "../CompilationSettings.h"
+#ifndef USE_PISTON_ARTICULATOR
 /**
  * @brief The shooter articulation subsystem
  * 
@@ -24,9 +25,6 @@ public:
 	/// Set the default command
 	void InitDefaultCommand();
 	
-	/// Get the current angle, in radians, above horizontal
-	double getAngle();
-	
 	/// Move the acticulator up at full speed
 	void moveUp();
 	
@@ -35,25 +33,25 @@ public:
 	
 	/// Stop moving the articulator
 	void stop();
+	
+	void resetEncoder();
+	
+	double getDisplacement();
+	
 private:
 	Talon *motor;
 	Encoder *encoder;
 	DigitalInput *topLimitSwitch,
 	             *bottomLimitSwitch;
 	
-	static const float ENCODER_RESOLUTION,
-					   DISTANCE_PER_REVOLUTION,
-					   BASE_LENGTH,
-					   SHOOTER_LENGTH,
-					   ARTICULATOR_MOUNT_LENGTH,
-					   // The length which the articulator shaft is at when 
-					   // the encoder reads zero. This is measured from the 
-					   // closest point of the line the shaft falls on to the 
-					   // pivot of the mount for the shaft motor to the pivot 
-					   // of the shaft on the shooter
-					   ARTICULATOR_SHAFT_ZERO,
-					   STARTING_DISTANCE;
+	static const int ENCODER_RESOLUTION,
+	                 ENCODER_GEAR_TEETH,
+	                 SCREW_GEAR_TEETH;
+
+	static const float SCREW_LEAD,
+		               DISTANCE_PER_TICK;
+
 	DriverStationLCD *dashboard;
 };
-
-#endif //SHOOTER_ARTICULATOR_H
+#endif // USE_PISTON_ARTICULATOR
+#endif // SHOOTER_ARTICULATOR_H

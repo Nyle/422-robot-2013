@@ -1,6 +1,6 @@
 #include "VariableDelay.h"
 
-const float VariableDelay::SCALING_FACTOR = 1.0;
+const float VariableDelay::SCALING_FACTOR = 5.0;
 
 VariableDelay::VariableDelay() {
 	Requires(shooter);
@@ -9,7 +9,13 @@ VariableDelay::VariableDelay() {
 }
 
 void VariableDelay::Initialize() {
-	SetTimeout( variableDial->getNormalized() * SCALING_FACTOR );
+	float delay = variableDial->getNormalized() * SCALING_FACTOR;
+	if( delay < 0.0 ) {
+		SetTimeout( 0.0 );
+	}
+	else {
+		SetTimeout( delay );
+	}
 }
 
 bool VariableDelay::IsFinished() {

@@ -1,8 +1,9 @@
 #ifndef SET_SHOOTER_ARTICULATOR_H
 #define SET_SHOOTER_ARTICULATOR_H
 
-#include "../CommandBase.h"
 #include "../CompilationSettings.h"
+#ifndef USE_PISTON_ARTICULATOR
+#include "../CommandBase.h"
 
 /**
  *
@@ -12,7 +13,7 @@
 class SetShooterArticulator: public CommandBase {
 public:
 	/// angle is in radians
-	SetShooterArticulator(float angle);
+	SetShooterArticulator(float displacement);
 	virtual void Initialize() {};
 	virtual void Execute();
 	virtual bool IsFinished();
@@ -23,4 +24,5 @@ private:
 	static const float MAX_ERROR;
 };
 
+#endif
 #endif

@@ -33,7 +33,7 @@ public:
 
 	Joystick* getSecondaryJoystick() { return secondaryJoystick; }
 	
-	bool tenthSpeedButtonPressed() { return tenthSpeedButton->Get(); }
+	bool lowSpeedButtonPressed() { return lowSpeedButton->Get(); }
 	bool halfSpeedButtonPressed() { return halfSpeedButton->Get(); }
 	bool fullSpeedButtonPressed() { return fullSpeedButton->Get(); }
 	
@@ -44,6 +44,12 @@ public:
 	
 	bool turn180ButtonPressed() { return turn180Button->Get(); }
 	bool toggleClimberButtonPressed() { return toggleClimberButton->Get(); }
+	
+#ifdef USE_PISTON_ARTICULATOR
+#ifdef PRIMARY_CONTROLS_ARTICULATOR
+	bool toggleArticulatorButtonPressed() { return toggleArticulatorButton->Get(); }
+#endif
+#endif
 	
 	bool fireButtonPressed() { return fireButton->Get(); }
 	
@@ -59,6 +65,9 @@ public:
 	bool toggleRedButtonPressed() { return toggleRedButton->Get(); }
 	bool toggleBlueButtonPressed() { return toggleBlueButton->Get(); }
 	
+	bool toggleFlashlightButtonPressed() { return toggleFlashlightButton->Get(); }
+	
+	bool liftResetButtonPressed() { return liftResetButton->Get(); }
 private:
 	
 #ifdef USE_PS3_CONTROLLER
@@ -71,7 +80,7 @@ private:
 	Joystick *secondaryJoystick;
 
 	               // Primary driver buttons
-	JoystickButton *tenthSpeedButton,
+	JoystickButton *lowSpeedButton,
 	               *halfSpeedButton,
 	               *fullSpeedButton,
 	               
@@ -81,6 +90,12 @@ private:
 
 	               *turn180Button,
 	               *toggleClimberButton,
+
+#ifdef USE_PISTON_ARTICULATOR
+#ifdef PRIMARY_CONTROLS_ARTICULATOR
+	               *toggleArticulatorButton,
+#endif
+#endif
 	               
 	               // Secondary driver buttons
 	               *fireButton,
@@ -94,7 +109,10 @@ private:
 	               *decreaseSetpointButton,
 
                    *toggleRedButton,
-				   *toggleBlueButton;
+				   *toggleBlueButton,
+
+				   *toggleFlashlightButton,
+				   *liftResetButton;
 };
 
 #endif // OI_H
